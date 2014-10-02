@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.date-filter').directive('dateFilter', ['DateFilter',
+angular.module('mean.date-filter').directive('meanDateFilter', ['DateFilter',
 
   function(DateFilter) {
     return {
