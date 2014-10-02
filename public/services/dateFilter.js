@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.date-filter').factory('DateFilter', ['$http',
+angular.module('mean.mean-date-filter').factory('DateFilter', ['$http',
   function($http) {
   	var setDateFilter = function(startDate, endDate, mode, callback) {
   		$http.put('dateFilter', {
