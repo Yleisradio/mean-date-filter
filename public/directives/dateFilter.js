@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.date-filter').directive('meanDateFilter', ['DateFilter',
+angular.module('mean.mean-date-filter').directive('meanDateFilter', ['DateFilter',
 
   function(DateFilter) {
     return {
@@ -20,7 +20,7 @@ angular.module('mean.date-filter').directive('meanDateFilter', ['DateFilter',
         endDateText: '@',
         format: '@'
       },
-      templateUrl: 'date-filter/directives/templates/dateFilter.html',
+      templateUrl: 'mean-date-filter/directives/templates/dateFilter.html',
       link: function($scope, element, attrs) {
         $scope.$watch(attrs.startDate, function(startDate) {
           $scope.startDate = startDate;
