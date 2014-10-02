@@ -5,7 +5,7 @@
  */
 var Module = require('meanio').Module;
 
-var DateFilter = new Module('date-filter');
+var DateFilter = new Module('mean-date-filter');
 
 /*
  * All MEAN packages require registration
