@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('mean.mean-date-filter').directive('meanDateFilter', ['DateFilter',
+angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFilter',
 
-  function(DateFilter) {
+  function(MeanDateFilter) {
     return {
       restrict: 'A',
       transclude: 'true',
@@ -75,11 +75,11 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['DateFilter
         };
 
         $scope.save = function() {
-          DateFilter.setDateFilter($scope.startDate, $scope.endDate, $scope.mode, function(data) {});
+          MeanDateFilter.setDateFilter($scope.startDate, $scope.endDate, $scope.mode, function(data) {});
         };
 
         var load = function() {
-          DateFilter.getDateFilter(function(data) {
+          MeanDateFilter.getDateFilter(function(data) {
             if (typeof data.startDate !== 'undefined') {
               $scope.startDate = moment(data.startDate).toDate();
             }

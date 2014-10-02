@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.date-filter').controller('DateFilterController', ['$scope', 'Global', 'DateFilter',
+angular.module('mean.mean-date-filter').controller('DateFilterController', ['$scope', 'Global', 'DateFilter',
   function($scope, Global, DateFilter) {
     $scope.global = Global;
     $scope.package = {
