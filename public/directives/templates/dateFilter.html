@@ -1,0 +1,33 @@
+<div class="row date-filter-buttons">
+  <div class="col-md-12">
+    <button ng-class="{'btn-primary': mode == 'year' }" ng-click="year()" class="btn">{{yearText}}</button>
+    <button ng-class="{'btn-primary': mode == 'month' }" ng-click="month()" class="btn">{{monthText}}</button>
+    <button ng-class="{'btn-primary': mode == 'week' }" ng-click="week()" class="btn">{{weekText}}</button>
+  </div>
+</div>
+<div class="row date-filter-form">
+  <div class="col-md-3">
+    <form class="form-inline" role="form">
+      <div class="form-group">
+        <label for="date-filter-start-date">{{startDateText}}</label>
+        <p class="input-group">
+          <input id="date-filter-start-date" ng-change="resetMode(); save();" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="startDate" is-open="opened.start" max-date="endDate" datepicker-options="dateOptions" ng-required="true" clear-text="{{clearText}}" current-text="{{currentText}}" close-text="{{closeText}}" ng-click="toggle('start', $event)" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="toggle('start', $event)"><i class="glyphicon glyphicon-calendar"></i>
+            </button>
+          </span>
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="date-filter-start-date">{{endDateText}}</label>
+        <p class="input-group">
+          <input ng-change="resetMode(); save();" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="endDate" is-open="opened.end" min-date="startDate" datepicker-options="dateOptions" ng-required="true" clear-text="{{clearText}}" current-text="{{currentText}}" close-text="{{closeText}}" ng-click="toggle('end', $event)" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="toggle('end', $event)"><i class="glyphicon glyphicon-calendar"></i>
+            </button>
+          </span>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
