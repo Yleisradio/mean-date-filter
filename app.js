@@ -17,7 +17,10 @@ DateFilter.register(function(app, auth, database) {
   DateFilter.routes(app, auth, database);
   
   DateFilter.aggregateAsset('css', 'dateFilter.css');
-  DateFilter.aggregateAsset('js', 'node_modules/moment/moment.js');
+  DateFilter.aggregateAsset('js', '/node_modules/mean-date-filter/node_modules/moment/moment.js', {
+    absolute: true,
+    global: true
+  });
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback
