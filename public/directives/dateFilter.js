@@ -100,13 +100,13 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
           $scope.endDateText = 'End Date';
         }
         if (!$scope.weekText) {
-          $scope.weekText = 'Viikko';
+          $scope.weekText = 'Week';
         }
         if (!$scope.monthText) {
-          $scope.monthText = 'Kuukausi';
+          $scope.monthText = 'Month';
         }
         if (!$scope.yearText) {
-          $scope.yearText = 'Vuosi';
+          $scope.yearText = 'Year';
         }
       }
     };
