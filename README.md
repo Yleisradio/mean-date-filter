@@ -1,6 +1,6 @@
-# Date Filter Mean Package
+# Date Filter
 
-Filter with start and end dates. Includes datepickers and quick select buttons.
+Date Filter is a mean.io package that allows user to specify starting and ending date with datepickers and quick select buttons.
 
 ## Features
 - Filter with start and end dates
@@ -10,7 +10,14 @@ Filter with start and end dates. Includes datepickers and quick select buttons.
 - Customizable date display format
 - Save and load filter settings for each user 
 
-## Simple Usage
+## Dependencies
+Requires MEAN 0.4.0
+Other dependencies are installed automatically by npm.
+
+## Installation http://mean.io
+npm install mean-date-filter --save
+
+## Basic Usage
 `<div mode="week" start-date="startDate" end-date="endDate" mean-date-filter></div>`
 
 ## Localized Usage
