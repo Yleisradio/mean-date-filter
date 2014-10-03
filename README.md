@@ -11,10 +11,10 @@ Date Filter is a mean.io package that allows user to specify starting and ending
 - Save and load filter settings for each user 
 
 ## Dependencies
-Requires MEAN 0.4.0
-Other dependencies are installed automatically by npm.
+- Requires MEAN 0.4.0 http://mean.io
+- Other dependencies are installed automatically by npm.
 
-## Installation http://mean.io
+## Installation 
 npm install mean-date-filter --save
 
 ## Basic Usage
