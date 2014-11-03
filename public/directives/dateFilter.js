@@ -48,7 +48,6 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
         };
 
         var changeMode = function(mode, callback) {
-          console.log('changemode');
           if (mode) {
             if (mode === 'year') {
               $scope.dates.startDate = moment(new Date()).subtract(1, 'year').toDate();
