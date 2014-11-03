@@ -7,8 +7,7 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
       restrict: 'A',
       transclude: 'true',
       scope: {
-        startDate: '=',
-        endDate: '=',
+        dates: '=',
         mode: '@',
         clearText: '@',
         currentText: '@',
@@ -22,14 +21,11 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
       },
       templateUrl: 'mean-date-filter/directives/templates/dateFilter.html',
       link: function($scope, element, attrs) {
-        $scope.$watch(attrs.startDate, function(startDate) {
-          $scope.startDate = startDate;
+        $scope.$watchCollection('dates', function(dates) {
+          $scope.dates = dates;
         });
-        $scope.$watch(attrs.endDate, function(endDate) {
-          $scope.endDate = endDate;
-        });
-        $scope.$watch(attrs.mode, function(mode) {
-          changeMode(mode());
+        $scope.$watch('mode', function(mode) {
+          changeMode(mode, $scope.save);
         });
         $scope.opened = {
           start: false,
@@ -42,62 +38,62 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
         };
 
         $scope.week = function() {
-          changeMode('week', $scope.save);
+          $scope.mode = 'week';
         };
         $scope.month = function() {
-          changeMode('month', $scope.save);
+          $scope.mode = 'month';
         };
         $scope.year = function() {
-          changeMode('year', $scope.save);
+          $scope.mode = 'year';
         };
 
         var changeMode = function(mode, callback) {
+          console.log('changemode');
           if (mode) {
-            $scope.mode = mode;
             if (mode === 'year') {
-              $scope.startDate = moment(new Date()).subtract(1, 'year').toDate();
-              $scope.endDate = moment(new Date()).subtract(1, 'days').toDate();
+              $scope.dates.startDate = moment(new Date()).subtract(1, 'year').toDate();
+              $scope.dates.endDate = moment(new Date()).subtract(1, 'days').toDate();
             } else if (mode === 'month') {
-              $scope.startDate = moment(new Date()).subtract(1, 'month').toDate();
-              $scope.endDate = moment(new Date()).subtract(1, 'days').toDate();
+              $scope.dates.startDate = moment(new Date()).subtract(1, 'month').toDate();
+              $scope.dates.endDate = moment(new Date()).subtract(1, 'days').toDate();
             } else if (mode === 'week') {
-              $scope.startDate = moment(new Date()).subtract(7, 'days').toDate();
-              $scope.endDate = moment(new Date()).subtract(1, 'days').toDate();
+              $scope.dates.startDate = moment(new Date()).subtract(7, 'days').toDate();
+              $scope.dates.endDate = moment(new Date()).subtract(1, 'days').toDate();
             }
             if (typeof callback === 'function') {
               callback();
             }
           }
-        }
+        };
 
         $scope.resetMode = function() {
           $scope.mode = null;
         };
 
         $scope.save = function() {
-          MeanDateFilter.setDateFilter($scope.startDate, $scope.endDate, $scope.mode, function(data) {});
+          MeanDateFilter.setDateFilter($scope.dates.startDate, $scope.dates.endDate, $scope.mode, function(data) {});
         };
 
         var load = function() {
           MeanDateFilter.getDateFilter(function(data) {
             if (typeof data.startDate !== 'undefined') {
-              $scope.startDate = moment(data.startDate).toDate();
+              $scope.dates.startDate = moment(data.startDate).toDate();
             }
             if (typeof data.endDate !== 'undefined') {
-              $scope.endDate = moment(data.endDate).toDate();
+              $scope.dates.endDate = moment(data.endDate).toDate();
             }
             if (typeof data.mode !== 'undefined') {
               $scope.mode = data.mode;
             }
           });
-        }
+        };
         load();
 
-        if (!$scope.startDateText) {
-          $scope.startDateText = 'Start Date';
+        if (!$scope.dates.startDateText) {
+          $scope.dates.startDateText = 'Start Date';
         }
-        if (!$scope.endDateText) {
-          $scope.endDateText = 'End Date';
+        if (!$scope.dates.endDateText) {
+          $scope.dates.endDateText = 'End Date';
         }
         if (!$scope.weekText) {
           $scope.weekText = 'Week';

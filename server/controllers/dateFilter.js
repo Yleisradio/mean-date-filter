@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var mongoose = require('mongoose'),
   DateFilter = mongoose.model('DateFilter');
@@ -8,13 +8,14 @@ exports.save = function(req, res) {
   DateFilter.find({
     user: req.user.id
   }).exec(function(err, dateFilters) {
+    var dateFilter;
     if (dateFilters.length) {
-      var dateFilter = dateFilters[0];
+      dateFilter = dateFilters[0];
       dateFilter.startDate = req.body.startDate;
       dateFilter.endDate = req.body.endDate;
       dateFilter.mode = req.body.mode;
     } else {
-      var dateFilter = new DateFilter(req.body);
+      dateFilter = new DateFilter(req.body);
     }
 
     dateFilter.user = req.user;
@@ -27,7 +28,7 @@ exports.save = function(req, res) {
       res.json(dateFilter);
     });
   });
-}
+};
 
 exports.load = function(req, res) {
   DateFilter.find({
@@ -44,4 +45,4 @@ exports.load = function(req, res) {
       res.json({});
     }
   });
-}
+};

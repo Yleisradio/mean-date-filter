@@ -11,7 +11,7 @@
       <div class="form-group">
         <label for="date-filter-start-date">{{startDateText}}</label>
         <p class="input-group">
-          <input id="date-filter-start-date" ng-change="resetMode(); save();" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="startDate" is-open="opened.start" max-date="endDate" datepicker-options="dateOptions" ng-required="true" clear-text="{{clearText}}" current-text="{{currentText}}" close-text="{{closeText}}" ng-click="toggle('start', $event)" />
+          <input id="date-filter-start-date" ng-change="resetMode(); save();" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dates.startDate" is-open="opened.start" max-date="endDate" datepicker-options="dateOptions" ng-required="true" clear-text="{{clearText}}" current-text="{{currentText}}" close-text="{{closeText}}" ng-click="toggle('start', $event)" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="toggle('start', $event)"><i class="glyphicon glyphicon-calendar"></i>
             </button>
@@ -21,7 +21,7 @@
       <div class="form-group">
         <label for="date-filter-start-date">{{endDateText}}</label>
         <p class="input-group">
-          <input ng-change="resetMode(); save();" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="endDate" is-open="opened.end" min-date="startDate" datepicker-options="dateOptions" ng-required="true" clear-text="{{clearText}}" current-text="{{currentText}}" close-text="{{closeText}}" ng-click="toggle('end', $event)" />
+          <input ng-change="resetMode(); save();" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dates.endDate" is-open="opened.end" min-date="startDate" datepicker-options="dateOptions" ng-required="true" clear-text="{{clearText}}" current-text="{{currentText}}" close-text="{{closeText}}" ng-click="toggle('end', $event)" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="toggle('end', $event)"><i class="glyphicon glyphicon-calendar"></i>
             </button>
