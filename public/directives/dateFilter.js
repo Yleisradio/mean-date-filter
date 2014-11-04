@@ -21,12 +21,6 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
       },
       templateUrl: 'mean-date-filter/directives/templates/dateFilter.html',
       link: function($scope, element, attrs) {
-        $scope.$watchCollection('dates', function(dates) {
-          $scope.dates = dates;
-        });
-        $scope.$watch('mode', function(mode) {
-          changeMode(mode, $scope.save);
-        });
         $scope.opened = {
           start: false,
           end: false,
@@ -38,17 +32,18 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
         };
 
         $scope.week = function() {
-          $scope.mode = 'week';
+          changeMode('week', $scope.save);
         };
         $scope.month = function() {
-          $scope.mode = 'month';
+          changeMode('month', $scope.save);
         };
         $scope.year = function() {
-          $scope.mode = 'year';
+          changeMode('year', $scope.save);
         };
 
         var changeMode = function(mode, callback) {
           if (mode) {
+            $scope.mode = mode;
             if (mode === 'year') {
               $scope.dates.startDate = moment(new Date()).subtract(1, 'year').toDate();
               $scope.dates.endDate = moment(new Date()).subtract(1, 'days').toDate();
@@ -88,11 +83,11 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
         };
         load();
 
-        if (!$scope.dates.startDateText) {
-          $scope.dates.startDateText = 'Start Date';
+        if (!$scope.startDateText) {
+          $scope.startDateText = 'Start Date';
         }
-        if (!$scope.dates.endDateText) {
-          $scope.dates.endDateText = 'End Date';
+        if (!$scope.endDateText) {
+          $scope.endDateText = 'End Date';
         }
         if (!$scope.weekText) {
           $scope.weekText = 'Week';
