@@ -17,7 +17,8 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
         yearText: '@',
         startDateText: '@',
         endDateText: '@',
-        format: '@'
+        format: '@',
+        momentjsFormat: '@'
       },
       templateUrl: 'mean-date-filter/directives/templates/dateFilter.html',
       link: function($scope, element, attrs) {
@@ -45,14 +46,14 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
           if (mode) {
             $scope.mode = mode;
             if (mode === 'year') {
-              $scope.dates.startDate = moment(new Date()).subtract(1, 'year').toDate();
-              $scope.dates.endDate = moment(new Date()).subtract(1, 'days').toDate();
+              $scope.dates.startDate = moment(new Date()).subtract(1, 'year').format($scope.momentjsFormat);
+              $scope.dates.endDate = moment(new Date()).subtract(1, 'days').format($scope.momentjsFormat);
             } else if (mode === 'month') {
-              $scope.dates.startDate = moment(new Date()).subtract(1, 'month').toDate();
-              $scope.dates.endDate = moment(new Date()).subtract(1, 'days').toDate();
+              $scope.dates.startDate = moment(new Date()).subtract(1, 'month').format($scope.momentjsFormat);
+              $scope.dates.endDate = moment(new Date()).subtract(1, 'days').format($scope.momentjsFormat);
             } else if (mode === 'week') {
-              $scope.dates.startDate = moment(new Date()).subtract(7, 'days').toDate();
-              $scope.dates.endDate = moment(new Date()).subtract(1, 'days').toDate();
+              $scope.dates.startDate = moment(new Date()).subtract(7, 'days').format($scope.momentjsFormat);
+              $scope.dates.endDate = moment(new Date()).subtract(1, 'days').format($scope.momentjsFormat);
             }
             if (typeof callback === 'function') {
               callback();
@@ -71,10 +72,10 @@ angular.module('mean.mean-date-filter').directive('meanDateFilter', ['MeanDateFi
         var load = function() {
           MeanDateFilter.getDateFilter(function(data) {
             if (typeof data.startDate !== 'undefined') {
-              $scope.dates.startDate = moment(data.startDate).toDate();
+              $scope.dates.startDate = moment(data.startDate).format($scope.momentjsFormat);
             }
             if (typeof data.endDate !== 'undefined') {
-              $scope.dates.endDate = moment(data.endDate).toDate();
+              $scope.dates.endDate = moment(data.endDate).format($scope.momentjsFormat);
             }
             if (typeof data.mode !== 'undefined') {
               $scope.mode = data.mode;
