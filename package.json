@@ -1,6 +1,6 @@
 {
   "name": "mean-date-filter",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Filter with start and end dates. Includes datepickers and quick select buttons.",
   "author": {
     "name": "Jaakko Ojalehto"
